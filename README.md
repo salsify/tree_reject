@@ -1,11 +1,46 @@
-# TreeReject
+# tree_reject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be
-able to package up your Ruby library into a gem. Put your Ruby code in the file
-`lib/tree_reject`. To experiment with that code, run 
-`bin/console` for an interactive prompt.
+[![Build Status](https://travis-ci.org/salsify/tree_reject.svg?branch=master)](https://travis-ci.org/salsify/tree_reject)
 
-TODO: Delete this and the text above, and describe your gem
+[![Gem Version](https://badge.fury.io/rb/tree_reject.svg)](https://badge.fury.io/rb/tree_reject)
+
+`tree_reject` is a Ruby gem that removes deeply nested keys from Ruby Hashes or hash-like objects.
+
+For example:
+
+```ruby
+hash = {
+  a: {
+    aa: {
+      aaa: 'aaa',
+      aab: 'aab'
+    }
+  },
+  b: {
+    ba: 'ba'
+  }
+}
+
+hash.tree_reject({
+  a: {
+    aa: :aaa
+  }
+})
+```
+
+results in:
+```ruby
+{
+  a: {
+    aa: {
+      aab: 'aab'
+    }
+  }, 
+  b: {
+    ba: 'ba'
+  }
+} 
+```
 
 ## Installation
 
@@ -25,7 +60,17 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+`tree_reject` extends Ruby's built-in `Hash`:
+
+```ruby
+my_hash.tree_reject(ignored_keys)
+```
+
+It is also available for objects that support `to_h`.
+
+```ruby
+TreeReject.tree_reject(my_hash_like, ignored_keys)
+```
 
 ## Development
 
@@ -48,4 +93,3 @@ https://github.com/salsify/tree_reject.## License
 
 The gem is available as open source under the terms of the
 [MIT License](http://opensource.org/licenses/MIT).
-
