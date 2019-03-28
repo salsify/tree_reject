@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/salsify/tree_reject.svg?branch=master)](https://travis-ci.org/salsify/tree_reject)
 
+[![Gem Version](https://badge.fury.io/rb/tree_reject.svg)](https://badge.fury.io/rb/tree_reject)
 
 `tree_reject` is a Ruby gem that removes deeply nested keys from Ruby Hashes or hash-like objects.
 
