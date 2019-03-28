@@ -8,8 +8,13 @@ describe TreeReject do
   context "TreeReject.tree_reject" do
 
     shared_examples "ignored keys in hash were removed" do
-      specify do
+      specify "hash as object" do
         actual = TreeReject.tree_reject(original, ignored)
+        expect(actual).to eq expected
+      end
+
+      specify "hash extension" do
+        actual = original.tree_reject(ignored)
         expect(actual).to eq expected
       end
     end

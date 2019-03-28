@@ -6,8 +6,8 @@ module TreeReject
   extend self
 
   module TreeRejectHash
-    def tree_reject
-      TreeReject.tree_reject(self)
+    def tree_reject(ignorned_keys)
+      TreeReject.tree_reject(self, ignorned_keys)
     end
   end
 
