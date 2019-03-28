@@ -6,7 +6,7 @@
 
 `tree_reject` is a Ruby gem that removes deeply nested keys from Ruby Hashes or hash-like objects.
 
-For example if you have the Hash:
+For example:
 
 ```ruby
 hash = {
@@ -20,18 +20,15 @@ hash = {
     ba: 'ba'
   }
 }
-```
 
-and `tree_reject` the Hash:
-```ruby
-{
+hash.tree_reject({
   a: {
     aa: :aaa
   }
-}
+})
 ```
 
-your new hash will be:
+results in:
 ```ruby
 {
   a: {
