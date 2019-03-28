@@ -19,11 +19,11 @@ module TreeReject
     ignored_leaves = extract_leaves(ignored_keys)
     ignored_subtrees = extract_subtrees(ignored_keys, ignored_leaves)
 
-    map.to_hash.each_with_object({}) do |(k, v), cleaned|
+    map.to_h.each_with_object({}) do |(k, v), cleaned|
       if ignored_leaves.include?(k)
         next
       elsif v.is_a?(Hash) || v.respond_to?(:attributes)
-        cleaned_v = tree_reject(v.to_hash, ignored_subtrees[k])
+        cleaned_v = tree_reject(v.to_h, ignored_subtrees[k])
         cleaned[k] = cleaned_v unless cleaned_v == {}
       elsif !v.nil?
         cleaned[k] = v
