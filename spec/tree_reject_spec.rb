@@ -20,20 +20,22 @@ describe TreeReject do
     end
 
     shared_examples "ignored keys in Virtus-like models were removed" do
-      specify do
-        actual = TreeReject.tree_reject(TestModel.new(original), ignored)
-        expect(actual).to eq expected
-      end
-    end
+      let(:test_model_klass) do
+        Class.new(Struct.new(:a, :h, :v)) do
+          def initialize(**attributes)
+            attributes.each do |key, value|
+              send("#{key}=", value)
+            end
+          end
 
-    class TestModel < Struct.new(:a, :h, :v)
-      def initialize(**attributes)
-        attributes.each do |key, value|
-          send("#{key}=", value)
+          alias_method :to_hash, :to_h
         end
       end
 
-      alias_method :to_hash, :to_h
+      specify do
+        actual = TreeReject.tree_reject(test_model_klass.new(original), ignored)
+        expect(actual).to eq expected
+      end
     end
 
     context "removes top level key" do
