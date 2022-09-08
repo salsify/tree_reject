@@ -33,7 +33,7 @@ jobs:
       - image: salsify/ruby_ci:<< parameters.ruby_version >>
     environment:
       CIRCLE_TEST_REPORTS: "test-results"
-      BUNDLE_GEMFILE: << parameters.gemfile >>
+      BUNDLE_GEMFILE: Gemfile
     working_directory: ~/tree_reject
     steps:
       - checkout
