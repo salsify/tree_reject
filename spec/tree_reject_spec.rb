@@ -33,7 +33,7 @@ describe TreeReject do
       end
 
       specify do
-        actual = TreeReject.tree_reject(test_model_klass.new(original), ignored)
+        actual = TreeReject.tree_reject(test_model_klass.new(**original), ignored)
         expect(actual).to eq expected
       end
     end
