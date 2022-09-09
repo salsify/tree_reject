@@ -55,4 +55,4 @@ module TreeReject
   end
 end
 
-Hash.send(:include, TreeReject::TreeRejectHash) # rubocop:disable Lint/SendWithMixinArgument
+Hash.include(TreeReject::TreeRejectHash)
