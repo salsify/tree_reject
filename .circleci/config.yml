@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   lint:
     docker:
-      - image: cimg/ruby_ci:2.7.6
+      - image: cimg/ruby:2.7.6
     working_directory: ~/tree_reject
     steps:
       - checkout
